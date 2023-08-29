@@ -10,10 +10,18 @@ import Combine
 
 
 
+protocol RecipeSearchViewModelProtocol: ObservableObject {
+    var recipes: [Recipe] { get set }
+    init(api: APIService)
+    func searchForRecipes(searchString: String)
+    
+}
 
 
 
-class RecipeSearchViewModel: ObservableObject {
+class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
+   
+    
     @Published var recipes: [Recipe]
     private let apiService: APIService
     
@@ -41,3 +49,19 @@ class RecipeSearchViewModel: ObservableObject {
 
     }
 }
+
+
+class MockRecipeSearchViewModel: RecipeSearchViewModel {
+    
+    override func searchForRecipes(searchString: String) {
+        self.recipes = [
+            Recipe(id: 716429,
+                   title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
+                   imageUrl: "https://spoonacular.com/recipeImages/716429-312x231.jpg"),
+        Recipe(id: 715538,
+               title: "What to make for dinner tonight?? Bruschetta Style Pork & Pasta",
+               imageUrl: "https://spoonacular.com/recipeImages/715538-312x231.jpg")]
+    }
+}
+
+
