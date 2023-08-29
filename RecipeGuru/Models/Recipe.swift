@@ -21,4 +21,6 @@ struct Recipe: Codable {
         case imageUrl = "image"
     }
 }
+
+let noDataRecipe = Recipe(id: -1, title: "No recipe found", imageUrl: "")
     
