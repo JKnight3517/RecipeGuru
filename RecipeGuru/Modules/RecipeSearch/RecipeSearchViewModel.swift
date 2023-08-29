@@ -37,13 +37,14 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] value in
                 switch value {
-                case .failure:
+                case .failure(let error):
+                    print(error.localizedDescription)
                     self?.recipes = [noDataRecipe]
                 case .finished:
                     break
                 }
-            } receiveValue: { [weak self] recipes in
-                self?.recipes = recipes
+            } receiveValue: { [weak self] response in
+                self?.recipes = response.results
             }
             .store(in: &cancellables)
 

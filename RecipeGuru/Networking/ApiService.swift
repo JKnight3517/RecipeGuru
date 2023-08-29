@@ -13,12 +13,13 @@ public class APIService {
     
     private let baseUrl = "https://api.spoonacular.com/recipes/complexSearch"
     
-    private let apiKeySuffix = "?apiKey=b0f00832a4f64ccf828ee1ddd5da2693"
+    private let apiKeySuffix = "&apiKey=b0f00832a4f64ccf828ee1ddd5da2693"
     
     private var cancellables = Set<AnyCancellable>()
     
-    func loadRecipes(searchString: String) -> AnyPublisher<[Recipe], Error> {
-        let urlString = baseUrl + "/query=\(searchString)" + apiKeySuffix
+    func loadRecipes(searchString: String) -> AnyPublisher<RecipeSearchResponse, Error> {
+        let urlString = baseUrl + "?query=\(searchString)" + apiKeySuffix
+        print(urlString)
          guard let url = URL(string: urlString) else {
              
              //TODO: Error Handling
@@ -32,7 +33,7 @@ public class APIService {
     
     private func load <T:Decodable>(url: URL) -> AnyPublisher<T,Error> {
         // Maybe take in string and try to make a url here instead -> Could be efficient
-        
+        //TODO: Add better error handling around URL errors/decoding errors
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap{ (data, response) -> Data in
                 guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
