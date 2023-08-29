@@ -13,12 +13,8 @@ struct RecipeSearchView: View {
     
     var body: some View {
         VStack {
-            List(viewModel.recipes) { recipe in
-                HStack {
-                    Text("\(recipe.id)")
-                    Spacer()
-                    Text("\(recipe.title)")
-                }
+            List($viewModel.recipes) { recipe in
+                RecipeCard(recipe: recipe)
             }
         }
         .padding()
