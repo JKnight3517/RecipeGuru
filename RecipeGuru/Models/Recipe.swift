@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct Recipe: Codable {
+struct Recipe: Codable, Identifiable {
     
     let id: Int
     let title: String
@@ -20,7 +20,11 @@ struct Recipe: Codable {
         case id, title
         case imageUrl = "image"
     }
+    
+    
+
 }
 
 let noDataRecipe = Recipe(id: -1, title: "No recipe found", imageUrl: "")
     
+
