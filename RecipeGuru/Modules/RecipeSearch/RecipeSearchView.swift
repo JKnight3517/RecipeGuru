@@ -13,13 +13,19 @@ struct RecipeSearchView: View {
     
     var body: some View {
         VStack {
-            List($viewModel.recipes) { recipe in
-                RecipeCard(recipe: recipe)
+            NavigationStack{
+                List($viewModel.recipes) { recipe in
+                    
+                    NavigationLink(destination: RecipeDetailView(recipeId: recipe.id)) {
+                        RecipeCard(recipe: recipe)
+                    }
+                    
+                }
+                .padding()
+                .onAppear {
+                    viewModel.searchForRecipes(searchString: "pasta")
+                }
             }
-        }
-        .padding()
-        .onAppear {
-            viewModel.searchForRecipes(searchString: "pasta")
         }
     }
 
