@@ -23,15 +23,18 @@ struct RecipeDetail: Decodable {
 struct Ingredient: Decodable, Identifiable {
     let id: Int
     let name: String
-    let origianl: String // example: 3 Scallions, chopped white and green parts seperated
+    let original: String // example: 3 Scallions, chopped white and green parts seperated
 }
     
 let testIngredients = [Ingredient(id: 1001,
                                   name: "butter",
-                                  origianl:  "1 tbsp butter"),
+                                  original:  "1 tbsp butter"),
                        Ingredient(id: 10011135,
                                   name: "cauliflower florets",
-                                  origianl: "about 2 cups frozen cauliflower florets, thawed, cut into bite-sized pieces")]
+                                  original: "about 2 cups frozen cauliflower florets, thawed, cut into bite-sized pieces")]
 
 let testRecipeDetailResponse = RecipeDetail(id: 716429, title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs", image: "https://spoonacular.com/recipeImages/716429-556x370.jpg", servings: 4, readyInMinutes: 40, extendedIngredients: testIngredients)
+
+
+let noRecipeDetailResponse = RecipeDetail(id: -999, title: "No Recipe Information Found", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [])
 

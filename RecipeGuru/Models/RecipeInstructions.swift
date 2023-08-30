@@ -25,3 +25,5 @@ let testRecipeSteps = [RecipeStep(number: 1, step: "Preheat the over to 200 degr
                        RecipeStep(number: 3, step: "Whisk together the eggs, buttermilk, butter and vanilla extract and vanilla bean in a small bowl.")]
 
 let testRecipeInstrcutions = RecipeInstructions(name: "Pasta", steps: testRecipeSteps)
+
+let noDataRecipeInstructions = RecipeInstructions(name: "No Instructions Found", steps: [])

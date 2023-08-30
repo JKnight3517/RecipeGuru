@@ -16,7 +16,7 @@ struct RecipeSearchView: View {
             NavigationStack{
                 List($viewModel.recipes) { recipe in
                     
-                    NavigationLink(destination: RecipeDetailView(recipeId: recipe.id)) {
+                    NavigationLink(destination: RecipeDetailView(viewModel: RecipeDetailViewModel(recipeId: recipe.id))) {
                         RecipeCard(recipe: recipe)
                     }
                     
