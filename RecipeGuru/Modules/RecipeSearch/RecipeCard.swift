@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeCard: View {
-    @Binding var recipe: Recipe
+    @Binding var recipe: ShortRecipe
     var body: some View {
         ZStack(alignment: .bottomLeading) {
 

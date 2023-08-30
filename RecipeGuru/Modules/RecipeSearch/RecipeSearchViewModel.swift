@@ -11,7 +11,7 @@ import Combine
 
 
 protocol RecipeSearchViewModelProtocol: ObservableObject {
-    var recipes: [Recipe] { get set }
+    var recipes: [ShortRecipe] { get set }
     init(api: APIService)
     func searchForRecipes(searchString: String)
     
@@ -22,7 +22,7 @@ protocol RecipeSearchViewModelProtocol: ObservableObject {
 class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
    
     
-    @Published var recipes: [Recipe]
+    @Published var recipes: [ShortRecipe]
     private let apiService: APIService
     
     private var cancellables = Set<AnyCancellable>()

@@ -9,8 +9,7 @@ import Foundation
 import Combine
 
 public class APIService {
-
-    
+ 
     private let baseUrl = "https://api.spoonacular.com/recipes/"
     
     private let apiKeyComponent = "apiKey=b0f00832a4f64ccf828ee1ddd5da2693"

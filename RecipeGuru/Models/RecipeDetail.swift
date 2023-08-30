@@ -37,4 +37,5 @@ let testRecipeDetailResponse = RecipeDetail(id: 716429, title: "Pasta with Garli
 
 
 let noRecipeDetailResponse = RecipeDetail(id: -999, title: "No Recipe Information Found", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [])
+let emptyRecipeDetail = RecipeDetail(id: -998, title: "", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [])
 

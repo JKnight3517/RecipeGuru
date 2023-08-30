@@ -23,13 +23,14 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
 
     private var recipeId: Int
     private let apiService: APIService
+    var recipeImageData: Data?
     
     private var cancellables = Set<AnyCancellable>()
     
     required init(api: APIService = APIService(), recipeId: Int) {
         self.apiService = api
-        self.recipeDetails = testRecipeDetailResponse
-        self.recipeInstructions = testRecipeInstrcutions
+        self.recipeDetails = emptyRecipeDetail
+        self.recipeInstructions = emptyRecipeInstructions
         self.recipeId = recipeId
     }
     
@@ -57,18 +58,27 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
                 switch value {
                 case .failure(let error):
                     print(error.localizedDescription)
-                    self?.recipeInstructions = noDataRecipeInstructions
+                    self?.recipeInstructions = noRecipeInstructions
                 case .finished:
                     break
                 }
             } receiveValue: { [weak self] response in
                 guard let instructions = response.first else {
-                    self?.recipeInstructions = noDataRecipeInstructions
+                    self?.recipeInstructions = noRecipeInstructions
                     return
                 }
                 self?.recipeInstructions = instructions
             }
             .store(in: &cancellables)
+    }
+    
+    
+    
+    
+    func markAsFavorite() {
+        print("Favorited")
+        
+        
     }
 }
 

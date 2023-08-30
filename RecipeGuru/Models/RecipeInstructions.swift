@@ -26,4 +26,5 @@ let testRecipeSteps = [RecipeStep(number: 1, step: "Preheat the over to 200 degr
 
 let testRecipeInstrcutions = RecipeInstructions(name: "Pasta", steps: testRecipeSteps)
 
-let noDataRecipeInstructions = RecipeInstructions(name: "No Instructions Found", steps: [])
+let noRecipeInstructions = RecipeInstructions(name: "No Instructions Found", steps: [])
+let emptyRecipeInstructions = RecipeInstructions(name: "", steps: [])

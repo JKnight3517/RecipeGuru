@@ -21,20 +21,52 @@ struct RecipeDetailView: View {
                 Text(viewModel.recipeDetails.title)
                     .padding(.leading, 20)
                     .multilineTextAlignment(.center)
-                Image("recipe_placeholder")
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .padding()
+
+                AsyncImage(url: URL(string: viewModel.recipeDetails.image)) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView("Loading...")
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .cornerRadius(20)
+                            .padding()
+                        //Store the image
+                    case .failure:
+                        Image(systemName: "fork.knife.circle")
+                            .font(.title)
+                            .frame(width: 150, height: 150)
+                    @unknown default:
+                        Image(systemName: "fork.knife.circle")
+                            .font(.title)
+                            .frame(width: 150, height: 150)
+                    }
+                }
+               
                 HStack {
                     Text("Cooking Time: \(viewModel.recipeDetails.readyInMinutes) minutes")
                         .font(.body)
-                        .padding(.leading, 15)
+                        .padding(.leading, 20)
                     Spacer()
                     Text("Servings: \(viewModel.recipeDetails.servings)")
                         .padding(.trailing, 20)
                     
                 }
+
+                
+                Button {
+                    viewModel.markAsFavorite()
+                } label: {
+                    Spacer()
+                    Text("Mark as Favorite")
+                    Spacer()
+                }
+                .padding(10)
+                .background(.green, in: Capsule())
+                .foregroundColor(.white)
+                .padding([.leading, .trailing], 20)
+
                 Divider()
                 LazyVStack(alignment: .leading) {
                     Text("Ingredients")
@@ -54,7 +86,7 @@ struct RecipeDetailView: View {
                     
                     
                 }
-                .padding([.leading, .trailing], 15)
+                .padding([.leading, .trailing], 20)
             }.onAppear{
                 viewModel.getRecipeDetails()
                 viewModel.getRecipeInstructions()
