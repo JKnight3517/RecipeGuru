@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 
 
@@ -21,8 +22,8 @@ protocol RecipeSearchViewModelProtocol: ObservableObject {
 
 class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
    
-    
     @Published var recipes: [ShortRecipe]
+
     private let apiService: APIService
     
     private var cancellables = Set<AnyCancellable>()

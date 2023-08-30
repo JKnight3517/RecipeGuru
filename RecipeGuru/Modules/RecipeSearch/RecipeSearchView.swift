@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeSearchView: View {
-    
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var viewModel = RecipeSearchViewModel()
     
     var body: some View {
@@ -16,7 +16,7 @@ struct RecipeSearchView: View {
             NavigationStack{
                 List($viewModel.recipes) { recipe in
                     
-                    NavigationLink(destination: RecipeDetailView(viewModel: RecipeDetailViewModel(recipeId: recipe.id))) {
+                    NavigationLink(destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id))) {
                         RecipeCard(recipe: recipe)
                     }
                     

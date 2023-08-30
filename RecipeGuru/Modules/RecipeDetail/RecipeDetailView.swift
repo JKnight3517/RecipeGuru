@@ -18,21 +18,20 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
-                Text(viewModel.recipeDetails.title)
+                Text(viewModel.recipeSummary?.title ?? "")
                     .padding(.leading, 20)
                     .multilineTextAlignment(.center)
 
-                AsyncImage(url: URL(string: viewModel.recipeDetails.image)) { phase in
+                AsyncImage(url: URL(string: viewModel.recipeSummary?.imageUrl ?? "")) { phase in
                     switch phase {
                     case .empty:
                         ProgressView("Loading...")
                     case .success(let image):
                         image
                             .resizable()
-                            .scaledToFill()
+                            .scaledToFit()
                             .cornerRadius(20)
                             .padding()
-                        //Store the image
                     case .failure:
                         Image(systemName: "fork.knife.circle")
                             .font(.title)
@@ -45,18 +44,22 @@ struct RecipeDetailView: View {
                 }
                
                 HStack {
-                    Text("Cooking Time: \(viewModel.recipeDetails.readyInMinutes) minutes")
-                        .font(.body)
-                        .padding(.leading, 20)
+                    if let readyInMinutes = viewModel.recipeSummary?.readyInMinutes {
+                        Text("Cooking Time: \(readyInMinutes) minutes")
+                            .font(.body)
+                            .padding(.leading, 20)
+                    }
                     Spacer()
-                    Text("Servings: \(viewModel.recipeDetails.servings)")
-                        .padding(.trailing, 20)
+                    if let servings = viewModel.recipeSummary?.servings {
+                        Text("Servings: \(servings)")
+                            .padding(.trailing, 20)
+                    }
                     
                 }
 
                 
                 Button {
-                    viewModel.markAsFavorite()
+                    viewModel.toggleFavorite()
                 } label: {
                     Spacer()
                     Text("Mark as Favorite")
@@ -72,15 +75,15 @@ struct RecipeDetailView: View {
                     Text("Ingredients")
                         .font(.title)
                     Spacer().frame(height: 15)
-                    ForEach(viewModel.recipeDetails.extendedIngredients) { ingredient in
-                        Text("- " + ingredient.original)
+                    ForEach(viewModel.recipeSummary?.ingredients ?? [], id:\.self) { ingredient in
+                        Text("- " + ingredient)
                     }
                     Divider()
                     Text("Recipe")
                         .font(.title)
                     Spacer().frame(height: 15)
-                    ForEach(viewModel.recipeInstructions.steps, id: \.number) { step in
-                        Text("\(step.number). \(step.step)")
+                    ForEach(viewModel.recipeSummary?.instructions ?? [], id: \.self) { step in
+                        Text(step)
                     }
                     
                     
@@ -88,8 +91,7 @@ struct RecipeDetailView: View {
                 }
                 .padding([.leading, .trailing], 20)
             }.onAppear{
-                viewModel.getRecipeDetails()
-                viewModel.getRecipeInstructions()
+                viewModel.loadData()
             }
         }.navigationTitle("Recipe Details")
     }
@@ -97,6 +99,6 @@ struct RecipeDetailView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView(viewModel: MockRecipeDetailViewModel(recipeId: 1))
+        RecipeDetailView(viewModel: MockRecipeDetailViewModel(viewContext: PersistenceController.shared.container.viewContext, recipeId: 1))
     }
 }
