@@ -26,6 +26,9 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
     @Published var savedRecipes: [ShortRecipe]
     private var viewContext: NSManagedObjectContext
     private let apiService: APIService
+    private var recipeSearchOffset: Int = 0
+    var allRecipesLoaded: Bool = false
+    private var searchString: String = ""
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -38,7 +41,14 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
     }
     
     func searchForRecipes(searchString: String) {
-        apiService.loadRecipes(searchString: searchString)
+        if self.searchString != searchString {
+            self.searchString = searchString
+            recipeSearchOffset = 0
+            allRecipesLoaded = false
+            recipes.removeAll()
+        }
+  
+        apiService.loadRecipes(searchString: searchString, offset: recipeSearchOffset)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] value in
                 switch value {
@@ -49,7 +59,11 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
                     break
                 }
             } receiveValue: { [weak self] response in
-                self?.recipes = response.results
+                self?.recipes.append(contentsOf: response.results)
+                self?.recipeSearchOffset += response.number
+                if response.results.count < 10 {
+                    self?.allRecipesLoaded = true
+                }
             }
             .store(in: &cancellables)
 
@@ -76,6 +90,7 @@ class MockRecipeSearchViewModel: RecipeSearchViewModel {
     
     override func searchForRecipes(searchString: String) {
         self.recipes = testRecipes
+        self.allRecipesLoaded = true
     }
 }
 

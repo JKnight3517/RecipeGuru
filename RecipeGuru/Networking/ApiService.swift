@@ -18,8 +18,8 @@ import Combine
     
     //MARK: Load Recipes
     
-    func loadRecipes(searchString: String) -> AnyPublisher<RecipeSearchResponse, Error> {
-        let urlString = baseUrl + "complexSearch?query=\(searchString)" + "&" + apiKeyComponent
+     func loadRecipes(searchString: String, offset: Int, numberOfRecipes: Int = 10) -> AnyPublisher<RecipeSearchResponse, Error> {
+        let urlString = baseUrl + "complexSearch?query=\(searchString)&offset=\(offset)&number=\(numberOfRecipes)" + "&" + apiKeyComponent
         print(urlString)
          guard let url = URL(string: urlString) else {
              

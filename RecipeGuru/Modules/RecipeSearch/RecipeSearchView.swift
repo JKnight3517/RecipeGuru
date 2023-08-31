@@ -16,12 +16,21 @@ struct RecipeSearchView: View {
         TabView {
             VStack {
                 NavigationView {
-                    List($viewModel.recipes) { recipe in
-                        RecipeCard(recipe: recipe).background(
-                            NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
-                                .opacity(0.0)
-                        )
+                    List {
+                        ForEach($viewModel.recipes) { recipe in
+                            RecipeCard(recipe: recipe).background(
+                                NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
+                                    .opacity(0.0)
+                            )
+                        }
+
                         
+                        if viewModel.allRecipesLoaded == false {
+                                        ProgressView()
+                                        .onAppear {
+                                            viewModel.searchForRecipes(searchString: searchText)
+                                        }
+                                    }
                     }
                     .scrollContentBackground(.hidden)
                     .searchable(text: $searchText, prompt: "Search for recipes") {
