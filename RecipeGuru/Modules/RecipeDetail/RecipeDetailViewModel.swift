@@ -88,8 +88,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     }
     
     private func saveRecipe() {
-        if let newRecipe = createLocalRecipe(){
-            
+        if createLocalRecipe() != nil {
             do {
                 try self.viewContext.save()
             }

@@ -13,7 +13,7 @@ import CoreData
 
 protocol RecipeSearchViewModelProtocol: ObservableObject {
     var recipes: [ShortRecipe] { get set }
-    init(api: APIService)
+    init(api: APIService, viewContext: NSManagedObjectContext)
     func searchForRecipes(searchString: String)
     
 }
@@ -23,14 +23,18 @@ protocol RecipeSearchViewModelProtocol: ObservableObject {
 class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
    
     @Published var recipes: [ShortRecipe]
-
+    @Published var savedRecipes: [ShortRecipe]
+    private var viewContext: NSManagedObjectContext
     private let apiService: APIService
     
     private var cancellables = Set<AnyCancellable>()
     
-    required init(api: APIService = APIService()) {
+    required init(api: APIService = APIService(),
+                  viewContext: NSManagedObjectContext) {
         self.apiService = api
+        self.viewContext = viewContext
         self.recipes = []
+        self.savedRecipes = []
     }
     
     func searchForRecipes(searchString: String) {
@@ -50,6 +54,21 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
             .store(in: &cancellables)
 
     }
+    
+    func fetchFavoritedRecipes() {
+        do {
+           let recipes = try viewContext.fetch(LocalRecipe.fetchRequest())
+            let shortRecipes = recipes.map({ShortRecipe(id: Int($0.id), title: $0.title ?? "", imageUrl: "")})
+            DispatchQueue.main.async { [weak self] in
+                self?.savedRecipes = shortRecipes
+            }
+        }
+        catch {
+            print("Error fetching local data")
+        }
+        
+    }
+    
 }
 
 
