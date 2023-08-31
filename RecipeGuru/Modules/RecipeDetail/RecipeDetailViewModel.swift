@@ -113,8 +113,8 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     
     
     private func getDetails() {
-        let detailsPublisher = apiService.loadRecipeDetails(id: recipeId)
-        let instructionsPublisher = apiService.loadRecipeInstructions(id: recipeId)
+        let detailsPublisher = apiService.load(endpoint: .detail(id: recipeId), type: RecipeDetail.self)
+        let instructionsPublisher = apiService.load(endpoint: .instructions(id: recipeId), type: [RecipeInstructions].self)
         
         Publishers.CombineLatest(detailsPublisher, instructionsPublisher)
             .receive(on: DispatchQueue.main)

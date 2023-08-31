@@ -47,8 +47,10 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
             allRecipesLoaded = false
             recipes.removeAll()
         }
-  
-        apiService.loadRecipes(searchString: searchString, offset: recipeSearchOffset)
+        
+        let endpoint = Endpoint.search(search: searchString, offset: recipeSearchOffset)
+        
+        apiService.load(endpoint: endpoint, type: RecipeSearchResponse.self)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] value in
                 switch value {
