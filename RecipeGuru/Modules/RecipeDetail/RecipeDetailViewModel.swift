@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import CoreData
+
 protocol RecipeDetailViewModelProtocol: ObservableObject {
     init(api: APIService, viewContext: NSManagedObjectContext, recipeId: Int)
     func loadData()
@@ -50,8 +51,6 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
             
         } else {
             getDetails()
-            
-            
         }
     }
     
