@@ -40,7 +40,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
             DispatchQueue.main.async { [ weak self] in
                 self?.recipeSummary = RecipeSummary(id: Int(recipe.id),
                                                     title: recipe.title ?? "",
-                                                    imageUrl: "",
+                                                    imageUrl: recipe.imageUrl ?? "",
                                                     readyInMinutes: Int(recipe.readyInMinutes),
                                                     servings: Int(recipe.servings),
                                                     isFavorite: recipe.isFavorite,
@@ -54,7 +54,6 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
             
         }
     }
-    
     
     
     private func fetchSavedRecipe() -> LocalRecipe? {
@@ -104,6 +103,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
         let newRecipe = LocalRecipe(context: viewContext)
         newRecipe.id = Int64(recipeSummary.id)
         newRecipe.title = recipeSummary.title
+        newRecipe.imageUrl = recipeSummary.imageUrl
         newRecipe.isFavorite = true
         newRecipe.readyInMinutes = Int64(recipeSummary.readyInMinutes)
         newRecipe.servings = Int64(recipeSummary.servings)
