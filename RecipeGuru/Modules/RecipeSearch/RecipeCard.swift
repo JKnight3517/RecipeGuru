@@ -12,26 +12,7 @@ struct RecipeCard: View {
     var body: some View {
         VStack(alignment: .center) {
             
-            AsyncImage(url: URL(string: recipe.imageUrl)) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView("Loading...")
-                case .success(let image):
-                    image
-                        .resizable()
-                        .frame(width: 350, height: 250, alignment: .center)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(20)
-                case .failure:
-                    Image(systemName: "fork.knife.circle")
-                        .font(.title)
-                        .frame(width: 150, height: 150)
-                @unknown default:
-                    Image(systemName: "fork.knife.circle")
-                        .font(.title)
-                        .frame(width: 150, height: 150)
-                }
-            }
+            RecipeImageView(imageUrl: recipe.imageUrl)
             Text(recipe.title)
                 .font(.custom("Georgia", size: 15, relativeTo: .title))
                 .foregroundStyle(.black)

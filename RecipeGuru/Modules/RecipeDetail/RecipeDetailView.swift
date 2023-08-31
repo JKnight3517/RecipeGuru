@@ -21,27 +21,8 @@ struct RecipeDetailView: View {
                 Text(viewModel.recipeSummary?.title ?? "")
                     .padding(.leading, 20)
                     .multilineTextAlignment(.center)
-
-                AsyncImage(url: URL(string: viewModel.recipeSummary?.imageUrl ?? "")) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView("Loading...")
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(20)
-                            .padding()
-                    case .failure:
-                        Image(systemName: "fork.knife.circle")
-                            .font(.title)
-                            .frame(width: 150, height: 150)
-                    @unknown default:
-                        Image(systemName: "fork.knife.circle")
-                            .font(.title)
-                            .frame(width: 150, height: 150)
-                    }
-                }
+                
+                RecipeImageView(imageUrl: viewModel.recipeSummary?.imageUrl ?? "")
                
                 HStack {
                     if let readyInMinutes = viewModel.recipeSummary?.readyInMinutes {
@@ -54,12 +35,10 @@ struct RecipeDetailView: View {
                         Text("Servings: \(servings)")
                             .padding(.trailing, 20)
                     }
-                    
                 }
-
-                
                 Button {
                     viewModel.toggleFavorite()
+                 
                 } label: {
                     Spacer()
                     Text("Mark as Favorite")
