@@ -13,6 +13,7 @@ struct RecipeSummary {
     let id: Int
     let title: String
     let imageUrl: String
+    let imageData: Data?
     let readyInMinutes: Int
     let servings: Int
     let isFavorite: Bool
@@ -23,6 +24,7 @@ struct RecipeSummary {
 let testRecipeSummary = RecipeSummary(id: 1,
                                       title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
                                       imageUrl: "https://spoonacular.com/recipeImages/716429-556x370.jpg",
+                                      imageData: nil,
                                       readyInMinutes: 40,
                                       servings: 0,
                                       isFavorite: false,

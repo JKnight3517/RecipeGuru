@@ -41,7 +41,8 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
             DispatchQueue.main.async { [ weak self] in
                 self?.recipeSummary = RecipeSummary(id: Int(recipe.id),
                                                     title: recipe.title ?? "",
-                                                    imageUrl: recipe.imageUrl ?? "",
+                                                    imageUrl: "",
+                                                    imageData: recipe.image,
                                                     readyInMinutes: Int(recipe.readyInMinutes),
                                                     servings: Int(recipe.servings),
                                                     isFavorite: recipe.isFavorite,
@@ -82,7 +83,11 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     }
     
     func toggleFavorite() {
-        saveRecipe()
+        if recipeSummary?.isFavorite ?? false {
+            removeRecipe()
+        } else {
+            saveRecipe()
+        }
     }
     
     private func saveRecipe() {
@@ -99,10 +104,12 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     
     private func createLocalRecipe() -> LocalRecipe? {
         guard let recipeSummary = recipeSummary else { return nil}
+        let imageData = ImageCache.shared.get(forKey: recipeSummary.imageUrl)?.pngData()
+        
         let newRecipe = LocalRecipe(context: viewContext)
         newRecipe.id = Int64(recipeSummary.id)
         newRecipe.title = recipeSummary.title
-        newRecipe.imageUrl = recipeSummary.imageUrl
+        newRecipe.image = imageData
         newRecipe.isFavorite = true
         newRecipe.readyInMinutes = Int64(recipeSummary.readyInMinutes)
         newRecipe.servings = Int64(recipeSummary.servings)
@@ -135,6 +142,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
                 self?.recipeSummary =  RecipeSummary(id: details.id,
                                                      title: details.title,
                                                      imageUrl: details.image,
+                                                     imageData: nil,
                                                      readyInMinutes: details.readyInMinutes,
                                                      servings: details.servings,
                                                      isFavorite: false,

@@ -7,95 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F2A4BB15-6633-4786-B679-60575B07337C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeGuru/Networking/ApiService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5"
-            endingLineNumber = "5"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "75EB4445-C545-4063-8161-B31CD96C8E05"
+            uuid = "2473CFBB-B1A2-4CBC-B9EA-123292E423C9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "searchForRecipes(searchString:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3E8F9C1B-EEA9-4B37-95FD-482F2CA49FA0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeGuru/Networking/ApiService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "load(endpoint:type:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3C1CB307-B217-4C9C-AB59-5A0DFAF26467"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeGuru/Modules/RecipeDetail/RecipeDetailViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "loadData()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "3C1CB307-B217-4C9C-AB59-5A0DFAF26467 - 3fc507820d4b88f3"
+                  uuid = "2473CFBB-B1A2-4CBC-B9EA-123292E423C9 - 20e292b37f821971"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "RecipeGuru.RecipeDetailViewModel.loadData() -&gt; ()"
+                  symbolName = "RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
                   moduleName = "RecipeGuru"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeDetail/RecipeDetailViewModel.swift"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "604">
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "626">
                </Location>
                <Location
-                  uuid = "3C1CB307-B217-4C9C-AB59-5A0DFAF26467 - 3fc507820d4b88d2"
+                  uuid = "2473CFBB-B1A2-4CBC-B9EA-123292E423C9 - 20e292b37f821971"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "RecipeGuru.RecipeDetailViewModel.loadData() -&gt; ()"
+                  symbolName = "RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
                   moduleName = "RecipeGuru"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeDetail/RecipeDetailViewModel.swift"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "604">
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "735">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -103,15 +55,175 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B621C53A-2E00-4B48-8077-8309F7626E24"
+            uuid = "8830DE55-4133-41B7-AC84-1B69E3FD68F1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RecipeGuru/Modules/RecipeSearch/RecipeSearchView.swift"
+            filePath = "RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "searchForRecipes(searchString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8830DE55-4133-41B7-AC84-1B69E3FD68F1 - 20e292b37f821933"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
+                  moduleName = "RecipeGuru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "615">
+               </Location>
+               <Location
+                  uuid = "8830DE55-4133-41B7-AC84-1B69E3FD68F1 - 20e292b37f821914"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
+                  moduleName = "RecipeGuru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "622">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "595AC6FA-41D4-4745-9B6E-936FA759D294"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "searchForRecipes(searchString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "595AC6FA-41D4-4745-9B6E-936FA759D294 - 41a429958a12a73e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (RecipeGuru.RecipeSearchResponse) -&gt; () in RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
+                  moduleName = "RecipeGuru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "94">
+               </Location>
+               <Location
+                  uuid = "595AC6FA-41D4-4745-9B6E-936FA759D294 - 41a429958a12a73e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (RecipeGuru.RecipeSearchResponse) -&gt; () in RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
+                  moduleName = "RecipeGuru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "110">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "967A1D5A-794A-49F4-BB9B-36631B81C395"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeGuru/Mocks/Networking/ApiServiceMocks.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "loadRecipeSearchResults(endpoint:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C9E8A55-57F6-4864-8C5E-FDB975F6F504"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "searchForRecipes(searchString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7C9E8A55-57F6-4864-8C5E-FDB975F6F504 - 41a429958a12a719"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (RecipeGuru.RecipeSearchResponse) -&gt; () in RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
+                  moduleName = "RecipeGuru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "365">
+               </Location>
+               <Location
+                  uuid = "7C9E8A55-57F6-4864-8C5E-FDB975F6F504 - 41a429958a12a719"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (RecipeGuru.RecipeSearchResponse) -&gt; () in RecipeGuru.RecipeSearchViewModel.searchForRecipes(searchString: Swift.String) -&gt; ()"
+                  moduleName = "RecipeGuru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/justinknight/repos/RecipeGuru/RecipeGuru/Modules/RecipeSearch/RecipeSearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "381">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6579EEB1-0439-4522-9B7C-E5C0B133E9FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeGuru/Modules/RecipeDetail/RecipeDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -119,33 +231,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "676AB614-17CE-46F3-A3E0-74B021A74BA4"
+            uuid = "2FE32F66-54B8-48FE-8C21-FE5A76864EC2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RecipeGuru/Networking/Endpoint.swift"
+            filePath = "RecipeGuru/Modules/RecipeDetail/RecipeDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "url"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "556B8FEB-E6FB-45EF-A708-5DBA377D3079"
+            uuid = "B6715C72-AE0E-4BE3-8C16-14312C6489DE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RecipeGuru/Networking/Endpoint.swift"
+            filePath = "RecipeGuru/Modules/RecipeDetail/RecipeDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "url"
-            landmarkType = "24">
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "loadData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

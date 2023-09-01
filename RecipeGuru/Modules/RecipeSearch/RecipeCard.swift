@@ -10,14 +10,27 @@ import SwiftUI
 struct RecipeCard: View {
     @Binding var recipe: ShortRecipe
     var body: some View {
-        VStack(alignment: .center) {
-            
-            RecipeImageView(imageUrl: recipe.imageUrl)
-            Text(recipe.title)
-                .font(.custom("Georgia", size: 15, relativeTo: .title))
-                .foregroundStyle(.black)
-                .multilineTextAlignment(.center)
-                .fontWeight(.semibold)
+        
+        HStack {
+            Spacer()
+            VStack(alignment: .center) {
+                if let imageData = recipe.imageData, let image = UIImage(data: imageData) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(20)
+                        .padding()
+                } else {
+                    RecipeImageView(url: recipe.imageUrl)
+                }
+        
+                Text(recipe.title)
+                    .font(.custom("Georgia", size: 15, relativeTo: .title))
+                    .foregroundStyle(.black)
+                    .multilineTextAlignment(.center)
+                    .fontWeight(.semibold)
+            }
+            Spacer()
         }
     }
 }

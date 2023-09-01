@@ -21,8 +21,16 @@ struct RecipeDetailView: View {
                 Text(viewModel.recipeSummary?.title ?? "")
                     .padding(.leading, 20)
                     .multilineTextAlignment(.center)
-                
-                RecipeImageView(imageUrl: viewModel.recipeSummary?.imageUrl ?? "")
+                if let imageData = viewModel.recipeSummary?.imageData, let image = UIImage(data:  imageData) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(20)
+                        .padding()
+                } else {
+                    RecipeImageView(url: viewModel.recipeSummary?.imageUrl ?? "")
+                }
+             
                
                 HStack {
                     if let readyInMinutes = viewModel.recipeSummary?.readyInMinutes {
@@ -41,7 +49,7 @@ struct RecipeDetailView: View {
                  
                 } label: {
                     Spacer()
-                    Text("Mark as Favorite")
+                    Text(viewModel.recipeSummary?.isFavorite ? "Remove from Favorites" : "Mark as Favorite")
                     Spacer()
                 }
                 .padding(10)

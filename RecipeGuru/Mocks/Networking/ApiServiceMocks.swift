@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+//TODO: Use in API Tests
+
 class APIServiceSuccessMock: APIService {
     var fetchRecipeSearchResult: AnyPublisher<RecipeSearchResponse, Error>?
     var fetchRecipeDetailResult: AnyPublisher<RecipeDetail, Error>?
