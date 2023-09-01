@@ -50,7 +50,7 @@ struct RecipeDetailView: View {
                  
                 } label: {
                     Spacer()
-                    Text(viewModel.recipeSummary?.isFavorite ?? false ? "Remove from Favorites" : "Mark as Favorite")
+                    Text(viewModel.isFavorited ? "Remove from Favorites" : "Mark as Favorite")
                     Spacer()
                 }
                 .padding(10)

@@ -20,7 +20,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     
     @Published var showError: Bool = false
     @Published var recipeSummary: RecipeSummary?
-    
+    @Published var isFavorited: Bool = false
     private var viewContext: NSManagedObjectContext
     private var recipeId: Int
     private let apiService: APIService
@@ -49,6 +49,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
                                                     isFavorite: recipe.isFavorite,
                                                     instructions: recipe.instructions ?? [],
                                                     ingredients: recipe.ingredients ?? [])
+                self?.isFavorited = true
             }
             
         } else {
@@ -76,6 +77,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
             viewContext.delete(recipe)
             do {
                 try self.viewContext.save()
+                self.isFavorited = false
             } catch {
                 print("Failed to delete recipe")
             }
@@ -95,6 +97,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
         if createLocalRecipe() != nil {
             do {
                 try self.viewContext.save()
+                self.isFavorited = true
             }
             catch {
                 print("Failed to Save Recipe")

@@ -14,7 +14,7 @@ struct ShortRecipe: Codable, Identifiable {
     let id: Int
     let title: String
     let imageUrl: String
-    let imageData: Data? = nil
+    var imageData: Data?
 
     
     enum CodingKeys: String, CodingKey {

@@ -75,7 +75,7 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
     func fetchFavoritedRecipes() {
         do {
            let recipes = try viewContext.fetch(LocalRecipe.fetchRequest())
-            let shortRecipes = recipes.map({ShortRecipe(id: Int($0.id), title: $0.title ?? "", imageUrl: "")})
+            let shortRecipes = recipes.map({ShortRecipe(id: Int($0.id), title: $0.title ?? "", imageUrl: "", imageData: $0.image)})
             DispatchQueue.main.async { [weak self] in
                 self?.savedRecipes = shortRecipes
             }

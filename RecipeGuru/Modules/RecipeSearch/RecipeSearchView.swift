@@ -14,6 +14,7 @@ struct RecipeSearchView: View {
     
     var body: some View {
         TabView {
+            //MARK: Search Tab
             VStack {
                 NavigationView {
                     List {
@@ -23,16 +24,18 @@ struct RecipeSearchView: View {
                                     .opacity(0.0)
                             )
                         }
-
+                        
                         
                         if viewModel.allRecipesLoaded == false {
-                                        ProgressView()
-                                        .onAppear {
-                                            viewModel.searchForRecipes(searchString: searchText)
-                                        }
-                                    }
+                            ProgressView()
+                                .onAppear {
+                                    viewModel.searchForRecipes(searchString: searchText)
+                                }
+                        }
                     }
                     .scrollContentBackground(.hidden)
+                    .listStyle(PlainListStyle())
+                    .listRowSeparator(.hidden)
                     .searchable(text: $searchText, prompt: "Search for recipes") {
                         if viewModel.recipes.isEmpty {
                             Text(searchText.isEmpty ? "Use the search bar to look for recipes" : "No Recipes Found")
@@ -46,6 +49,7 @@ struct RecipeSearchView: View {
                 Label("Search", systemImage: "magnifyingglass")
             }
             
+            //MARK: Favorites Tab
             VStack {
                 NavigationView {
                     if viewModel.savedRecipes.count > 0 {
