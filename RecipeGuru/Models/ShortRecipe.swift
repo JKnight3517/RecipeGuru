@@ -25,7 +25,7 @@ struct ShortRecipe: Codable, Identifiable {
 
 }
 
-let testRecipes: [ShortRecipe] = [
+let testShortRecipes: [ShortRecipe] = [
     ShortRecipe(id: 716429,
            title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
            imageUrl: "https://spoonacular.com/recipeImages/716429-312x231.jpg"),

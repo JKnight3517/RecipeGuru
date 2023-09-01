@@ -8,10 +8,28 @@
 import Foundation
 import Combine
 
- class APIService {
+
+protocol APIServiceProtocol {
+    func loadRecipeSearchResults(endpoint: Endpoint) -> AnyPublisher<RecipeSearchResponse, Error>
+    func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetail, Error>
+    func loadRecipeInstructions(endpoint: Endpoint) -> AnyPublisher<RecipeInstructions, Error>
+}
+
+class APIService: APIServiceProtocol {
     
     private var cancellables = Set<AnyCancellable>()
     
+    func loadRecipeSearchResults(endpoint: Endpoint) -> AnyPublisher<RecipeSearchResponse, Error> {
+        load(endpoint: endpoint, type: RecipeSearchResponse.self)
+    }
+    
+    func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetail, Error> {
+        load(endpoint: endpoint, type: RecipeDetail.self)
+    }
+    
+    func loadRecipeInstructions(endpoint: Endpoint) -> AnyPublisher<RecipeInstructions, Error> {
+        load(endpoint: endpoint, type: RecipeInstructions.self)
+    }
     
    
     //MARK: Generic Load Data Function
@@ -39,7 +57,7 @@ import Combine
 extension APIService {
     enum APIError: LocalizedError {
         case invalidUrl
-        case custom(error: Error)
+        case custom(error: String)
         case invalidStatusCode
         case invalidData
         case failedToDecode(error: Error)
@@ -57,7 +75,7 @@ extension APIService {
             case .failedToDecode:
                 return "Failed to decode"
             case .custom(let error):
-                return "Something went wrong \(error.localizedDescription)"
+                return "Something went wrong \(error)"
             }
         }
     }

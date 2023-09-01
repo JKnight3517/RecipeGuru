@@ -50,7 +50,7 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
         
         let endpoint = Endpoint.search(search: searchString, offset: recipeSearchOffset)
         
-        apiService.load(endpoint: endpoint, type: RecipeSearchResponse.self)
+        apiService.loadRecipeSearchResults(endpoint: endpoint)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] value in
                 switch value {
@@ -63,6 +63,7 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
             } receiveValue: { [weak self] response in
                 self?.recipes.append(contentsOf: response.results)
                 self?.recipeSearchOffset += response.number
+                print("Response: \(response.results)")
                 if response.results.count < 10 {
                     self?.allRecipesLoaded = true
                 }
@@ -91,8 +92,7 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
 class MockRecipeSearchViewModel: RecipeSearchViewModel {
     
     override func searchForRecipes(searchString: String) {
-        self.recipes = testRecipes
-        self.allRecipesLoaded = true
+        self.recipes = testShortRecipes
     }
 }
 
