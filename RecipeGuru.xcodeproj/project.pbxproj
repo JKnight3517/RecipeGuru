@@ -162,13 +162,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		676D6CB72AA18CD40035821C /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		676D6CBA2AA1CFC70035821C /* ImageHandling */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,7 +201,6 @@
 				6775BB8A2A9E914300F3A9A3 /* Models */,
 				6775BB852A9E790100F3A9A3 /* Networking */,
 				676D6CAE2AA1453E0035821C /* CoreData */,
-				676D6CB72AA18CD40035821C /* Helpers */,
 				676D6CAF2AA145510035821C /* Mocks */,
 				6775BB5F2A9E766100F3A9A3 /* Assets.xcassets */,
 				6775BB612A9E766100F3A9A3 /* Preview Content */,

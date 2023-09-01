@@ -18,13 +18,14 @@ protocol RecipeDetailViewModelProtocol: ObservableObject {
 
 class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     
-
+    @Published var showError: Bool = false
     @Published var recipeSummary: RecipeSummary?
     
     private var viewContext: NSManagedObjectContext
     private var recipeId: Int
     private let apiService: APIService
     var recipeImageData: Data?
+    var error: Error?
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -58,7 +59,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     
     private func fetchSavedRecipe() -> LocalRecipe? {
         do {
-           let recipes = try viewContext.fetch(LocalRecipe.fetchRequest())
+            let recipes = try viewContext.fetch(LocalRecipe.fetchRequest())
             print(recipes.count)
             return recipes.first(where: {$0.id == recipeId})
         }
@@ -67,7 +68,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
             return nil
         }
         
-     
+        
     }
     
     func removeRecipe() {
@@ -125,10 +126,10 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
         
         Publishers.CombineLatest(detailsPublisher, instructionsPublisher)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .failure(let error):
-                    print("Error loading recipe details: \(error)")
+                    self?.error = error
                 case .finished:
                     print("Finished")
                 }

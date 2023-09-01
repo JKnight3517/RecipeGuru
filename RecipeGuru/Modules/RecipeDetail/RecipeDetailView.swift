@@ -44,12 +44,13 @@ struct RecipeDetailView: View {
                             .padding(.trailing, 20)
                     }
                 }
+                
                 Button {
                     viewModel.toggleFavorite()
                  
                 } label: {
                     Spacer()
-                    Text(viewModel.recipeSummary?.isFavorite ? "Remove from Favorites" : "Mark as Favorite")
+                    Text(viewModel.recipeSummary?.isFavorite ?? false ? "Remove from Favorites" : "Mark as Favorite")
                     Spacer()
                 }
                 .padding(10)
@@ -58,6 +59,7 @@ struct RecipeDetailView: View {
                 .padding([.leading, .trailing], 20)
 
                 Divider()
+                
                 LazyVStack(alignment: .leading) {
                     Text("Ingredients")
                         .font(.title)
@@ -72,15 +74,13 @@ struct RecipeDetailView: View {
                     ForEach(viewModel.recipeSummary?.instructions ?? [], id: \.self) { step in
                         Text(step)
                     }
-                    
-                    
-                    
                 }
                 .padding([.leading, .trailing], 20)
             }.onAppear{
                 viewModel.loadData()
             }
         }.navigationTitle("Recipe Details")
+      
     }
 }
 
