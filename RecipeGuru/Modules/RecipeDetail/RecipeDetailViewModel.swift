@@ -24,6 +24,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     private var viewContext: NSManagedObjectContext
     private var recipeId: Int
     private let apiService: APIService
+    private var coreDataRecipe: LocalRecipe?
     var recipeImageData: Data?
     var error: Error?
     
@@ -40,6 +41,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     func loadData() {
         if let recipe = fetchSavedRecipe() {
             DispatchQueue.main.async { [ weak self] in
+                self?.coreDataRecipe = recipe
                 self?.recipeSummary = RecipeSummary(id: Int(recipe.id),
                                                     title: recipe.title ?? "",
                                                     imageUrl: "",
@@ -73,7 +75,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     }
     
     func removeRecipe() {
-        if let recipe = createLocalRecipe() {
+        if let recipe = coreDataRecipe {
             viewContext.delete(recipe)
             do {
                 try self.viewContext.save()
