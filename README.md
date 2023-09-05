@@ -12,8 +12,13 @@ Recipe Guru is a simple SwiftUI applications that allows users to look up inform
 - Ability to search for different types of recipe by keyword
 - Offline Local Storage of recipe details and title photo.
 - Ability to mark a recipe as Favorite which will then store that recipe locally
-![Screenshot 2023-09-01 at 1 59 22 AM](https://github.com/JKnight3517/RecipeGuru/assets/24241139/1a6c7133-69b8-4917-91d1-01855a9cbd04)
-![Screenshot 2023-09-01 at 2 01 10 AM](https://github.com/JKnight3517/RecipeGuru/assets/24241139/a0a98a33-e129-4998-aab1-b78045b2bc38)
+-
+-
+- <img width="350" alt="Screenshot 2023-09-05 at 2 03 32 PM" src="https://github.com/JKnight3517/RecipeGuru/assets/24241139/06a42596-7229-41a0-8fda-800edf775a16">
+
+<img width="350" alt="Screenshot 2023-09-05 at 2 04 25 PM" src="https://github.com/JKnight3517/RecipeGuru/assets/24241139/d59cb66f-216a-49ed-8806-1244ea010ba3">
+
+
 
 ## Architecture
 - This app largely follows the common MVVM architecture so each view will have a view model. The view reacts to changes in the view model and update accordingly, while the viewModel handles initiating and receving responses from API calls as well as fetching and storing data to Core Data.
@@ -24,7 +29,4 @@ Recipe Guru is a simple SwiftUI applications that allows users to look up inform
 - Remaining faithful to the ~ 4-5 hours alotted for this project, there are some areas that need to be updated
   1. Implement API Tests
   2. Add better Error Handling
-  3. Implemnt UI Tests
-  4. Fix locally stored image loading on list view
-  5. Code Clean up and review
-  6. Add an Icon
+  3. Implement UI Tests
