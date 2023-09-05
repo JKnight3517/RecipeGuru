@@ -27,7 +27,7 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
     private var viewContext: NSManagedObjectContext
     private let apiService: APIService
     private var recipeSearchOffset: Int = 0
-    var allRecipesLoaded: Bool = false
+    var allRecipesLoaded: Bool = true
     private var searchString: String = ""
     
     private var cancellables = Set<AnyCancellable>()
@@ -64,9 +64,7 @@ class RecipeSearchViewModel: RecipeSearchViewModelProtocol {
                 self?.recipes.append(contentsOf: response.results)
                 self?.recipeSearchOffset += response.number
                 print("Response: \(response.results)")
-                if response.results.count < 10 {
-                    self?.allRecipesLoaded = true
-                }
+                self?.allRecipesLoaded  = self?.recipes.count ?? 0 > response.number
             }
             .store(in: &cancellables)
 
