@@ -48,30 +48,36 @@ struct RecipeSearchView: View {
             }
             
             //MARK: Favorites Tab
-            VStack {
+            VStack(alignment: .center) {
                 NavigationView {
+                    
                     if viewModel.savedRecipes.count > 0 {
-                        List($viewModel.savedRecipes) { recipe in
-                            RecipeCard(recipe: recipe).background(
-                                NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
-                                    .opacity(0.0)
-                            ) .listRowSeparator(.hidden)
-                            
+                        List {
+                            Section("Favorites") {
+                                ForEach($viewModel.savedRecipes) { recipe in
+                                    RecipeCard(recipe: recipe).background(
+                                        NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
+                                            .opacity(0.0)
+                                    ) .listRowSeparator(.hidden)
+                                }
+                            }.headerProminence(.increased)
                         }
                         .scrollContentBackground(.hidden)
                     } else {
                         Text("No recipes marked as favorite")
                     }
                 }
-            }.tabItem {
+            }
+            .tabItem {
                 Label("Favorites", systemImage: "star")
-            }.onAppear() {
+            }
+            .onAppear() {
                 viewModel.fetchFavoritedRecipes()
             }
-            
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
