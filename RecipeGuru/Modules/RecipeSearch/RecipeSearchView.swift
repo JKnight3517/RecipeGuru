@@ -22,7 +22,7 @@ struct RecipeSearchView: View {
                             RecipeCard(recipe: recipe).background(
                                 NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
                                     .opacity(0.0)
-                            )
+                            ) .listRowSeparator(.hidden)
                         }
                         
                         
@@ -34,8 +34,6 @@ struct RecipeSearchView: View {
                         }
                     }
                     .scrollContentBackground(.hidden)
-                    .listStyle(PlainListStyle())
-                    .listRowSeparator(.hidden)
                     .searchable(text: $searchText, prompt: "Search for recipes") {
                         if viewModel.recipes.isEmpty {
                             Text(searchText.isEmpty ? "Use the search bar to look for recipes" : "No Recipes Found")
@@ -57,7 +55,7 @@ struct RecipeSearchView: View {
                             RecipeCard(recipe: recipe).background(
                                 NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
                                     .opacity(0.0)
-                            )
+                            ) .listRowSeparator(.hidden)
                             
                         }
                         .scrollContentBackground(.hidden)
