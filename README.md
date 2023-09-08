@@ -23,8 +23,7 @@ Recipe Guru is a simple SwiftUI applications that allows users to look up inform
 - This app largely follows the common MVVM architecture so each view will have a view model. The view reacts to changes in the view model and update accordingly, while the viewModel handles initiating and receving responses from API calls as well as fetching and storing data to Core Data.
 - Right now the Offline storage solution is Core Data which works well for handling the recipe details
 
-## TODO 
-- Remaining faithful to the ~ 4-5 hours alotted for this project, there are some areas that need to be updated
+## TODO
   1. Implement API Tests
   2. Add better Error Handling
   3. Implement UI Tests
