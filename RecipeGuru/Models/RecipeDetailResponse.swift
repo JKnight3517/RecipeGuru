@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct RecipeDetail: Decodable {
+struct RecipeDetailResponse: Decodable {
     var id: Int
     var title: String
     var image: String
@@ -33,9 +33,9 @@ let testIngredients = [Ingredient(id: 1001,
                                   name: "cauliflower florets",
                                   original: "about 2 cups frozen cauliflower florets, thawed, cut into bite-sized pieces")]
 
-let testRecipeDetailResponse = RecipeDetail(id: 716429, title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs", image: "https://spoonacular.com/recipeImages/716429-556x370.jpg", servings: 4, readyInMinutes: 40, extendedIngredients: testIngredients)
+let testRecipeDetailResponse = RecipeDetailResponse(id: 716429, title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs", image: "https://spoonacular.com/recipeImages/716429-556x370.jpg", servings: 4, readyInMinutes: 40, extendedIngredients: testIngredients)
 
 
-let noRecipeDetailResponse = RecipeDetail(id: -999, title: "No Recipe Information Found", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [])
-let emptyRecipeDetail = RecipeDetail(id: -998, title: "", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [])
+let noRecipeDetailResponse = RecipeDetailResponse(id: -999, title: "No Recipe Information Found", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [])
+let emptyRecipeDetail = RecipeDetailResponse(id: -998, title: "", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [])
 

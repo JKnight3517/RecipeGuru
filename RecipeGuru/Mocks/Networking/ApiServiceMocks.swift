@@ -12,7 +12,7 @@ import Combine
 
 class APIServiceSuccessMock: APIService {
     var fetchRecipeSearchResult: AnyPublisher<RecipeSearchResponse, Error>?
-    var fetchRecipeDetailResult: AnyPublisher<RecipeDetail, Error>?
+    var fetchRecipeDetailResult: AnyPublisher<RecipeDetailResponse, Error>?
     var fetchRecipeInstructionsResult: AnyPublisher<RecipeInstructions,Error>?
     
     override func loadRecipeSearchResults(endpoint: Endpoint) -> AnyPublisher<RecipeSearchResponse, Error> {
@@ -23,7 +23,7 @@ class APIServiceSuccessMock: APIService {
         }
     }
     
-    override func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetail, Error> {
+    override func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetailResponse, Error> {
         if let result = fetchRecipeDetailResult {
             return result
         } else {

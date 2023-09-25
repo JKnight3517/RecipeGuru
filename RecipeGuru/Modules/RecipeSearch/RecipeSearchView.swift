@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct RecipeSearchView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -20,8 +21,13 @@ struct RecipeSearchView: View {
                     List {
                         ForEach($viewModel.recipes) { recipe in
                             RecipeCard(recipe: recipe).background(
-                                NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
-                                    .opacity(0.0)
+                                NavigationLink("", destination:RecipeDetailView(
+                                    viewModel: RecipeDetailViewModel(viewContext: viewContext,
+                                                                     recipeId: recipe.id),
+                                    store: Store.init(initialState: RecipeDetail.State()) {
+                                        RecipeDetail()._printChanges()
+                                    }))
+                                .opacity(0.0)
                             ) .listRowSeparator(.hidden)
                         }
                         
@@ -56,9 +62,11 @@ struct RecipeSearchView: View {
                             Section("Favorites") {
                                 ForEach($viewModel.savedRecipes) { recipe in
                                     RecipeCard(recipe: recipe).background(
-                                        NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id)))
+                                        NavigationLink("", destination: RecipeDetailView(viewModel: RecipeDetailViewModel(viewContext: viewContext, recipeId: recipe.id), store: Store.init(initialState: RecipeDetail.State()) {
+                                            RecipeDetail()._printChanges()
+                                        }))
                                             .opacity(0.0)
-                                    ) .listRowSeparator(.hidden)
+                                    ).listRowSeparator(.hidden)
                                 }
                             }.headerProminence(.increased)
                         }

@@ -11,7 +11,7 @@ import Combine
 
 protocol APIServiceProtocol {
     func loadRecipeSearchResults(endpoint: Endpoint) -> AnyPublisher<RecipeSearchResponse, Error>
-    func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetail, Error>
+    func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetailResponse, Error>
     func loadRecipeInstructions(endpoint: Endpoint) -> AnyPublisher<RecipeInstructions, Error>
 }
 
@@ -23,8 +23,8 @@ class APIService: APIServiceProtocol {
         load(endpoint: endpoint, type: RecipeSearchResponse.self)
     }
     
-    func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetail, Error> {
-        load(endpoint: endpoint, type: RecipeDetail.self)
+    func loadRecipeDetail(endpoint: Endpoint) -> AnyPublisher<RecipeDetailResponse, Error> {
+        load(endpoint: endpoint, type: RecipeDetailResponse.self)
     }
     
     func loadRecipeInstructions(endpoint: Endpoint) -> AnyPublisher<RecipeInstructions, Error> {

@@ -126,7 +126,7 @@ class RecipeDetailViewModel: RecipeDetailViewModelProtocol {
     
     
     private func getDetails() {
-        let detailsPublisher = apiService.load(endpoint: .detail(id: recipeId), type: RecipeDetail.self)
+        let detailsPublisher = apiService.load(endpoint: .detail(id: recipeId), type: RecipeDetailResponse.self)
         let instructionsPublisher = apiService.load(endpoint: .instructions(id: recipeId), type: [RecipeInstructions].self)
         
         Publishers.CombineLatest(detailsPublisher, instructionsPublisher)
